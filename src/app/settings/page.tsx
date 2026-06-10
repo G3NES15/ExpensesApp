@@ -1,4 +1,5 @@
 import { AccountMenuButton } from "@/components/account-menu-button";
+import { PasswordSettingsForm } from "@/components/password-settings-form";
 
 export default function SettingsPage() {
   return (
@@ -11,8 +12,10 @@ export default function SettingsPage() {
         <div className="rounded-2xl border border-[#4169E1]/30 bg-black/50 p-10 shadow-[0_0_60px_rgba(65,105,225,0.15)] backdrop-blur-sm">
           <h1 className="text-3xl font-semibold text-white">Settings</h1>
           <p className="mt-4 text-zinc-400">
-            Account and app preferences will live here soon.
+            Manage your account security and app preferences.
           </p>
+
+          <PasswordSettingsForm />
         </div>
       </div>
     </main>
