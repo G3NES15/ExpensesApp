@@ -1,0 +1,14 @@
+---
+description: Require commit message approval before pushing to main
+alwaysApply: true
+---
+
+# Git Commit Workflow
+
+Before committing and pushing to `main`:
+
+1. Show the user a **suggested commit message** based on the staged changes.
+2. **Ask for approval** — wait for the user to confirm the suggested message or provide a different one.
+3. Only run `git commit` and `git push origin main` after the user approves.
+
+Do not commit or push to `main` without explicit approval of the commit message, unless the user includes the exact message they want in the same request.

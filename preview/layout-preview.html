@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expenses App — Layout Preview</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: #000;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .preview-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        background: #111;
+        border-bottom: 1px solid #333;
+        font-size: 0.875rem;
+        color: #a1a1aa;
+      }
+
+      .preview-bar strong {
+        color: #fff;
+      }
+
+      .preview-toggle {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .preview-toggle button {
+        cursor: pointer;
+        border: 1px solid #4169e1;
+        background: transparent;
+        color: #fff;
+        border-radius: 9999px;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.8125rem;
+      }
+
+      .preview-toggle button.active {
+        background: #4169e1;
+      }
+
+      header {
+        display: none;
+      }
+
+      .user-menu {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+      }
+
+      .btn-outline,
+      .btn-solid {
+        cursor: pointer;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: background-color 0.15s ease;
+      }
+
+      .btn-outline {
+        border: 1px solid #4169e1;
+        background: transparent;
+        color: #fff;
+      }
+
+      .btn-outline:hover {
+        background: rgba(65, 105, 225, 0.2);
+      }
+
+      .btn-solid {
+        border: none;
+        background: #4169e1;
+        color: #fff;
+      }
+
+      .btn-solid:hover {
+        background: #3558c9;
+      }
+
+      .btn-large {
+        padding: 0.625rem 2rem;
+      }
+
+      .user-button {
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(65, 105, 225, 0.3);
+        background: linear-gradient(135deg, #4169e1, #1e3a8a);
+        display: grid;
+        place-items: center;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      main {
+        position: relative;
+        display: flex;
+        min-height: calc(100vh - 49px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background: linear-gradient(to bottom right, #000, #09090b, #4169e1);
+      }
+
+      .welcome-sign {
+        margin-bottom: 3rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(65, 105, 225, 0.3);
+        background: rgba(0, 0, 0, 0.5);
+        padding: 2.5rem 3.5rem;
+        box-shadow: 0 0 60px rgba(65, 105, 225, 0.15);
+        backdrop-filter: blur(4px);
+      }
+
+      .welcome-sign h1 {
+        margin: 0;
+        text-align: center;
+        font-size: clamp(3rem, 8vw, 3.75rem);
+        font-weight: 600;
+        letter-spacing: 0.025em;
+      }
+
+      .actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview-bar">
+      <span><strong>Static preview</strong> — buttons are non-functional</span>
+      <div class="preview-toggle">
+        <button type="button" id="toggle-signed-out" class="active">
+          Signed out
+        </button>
+        <button type="button" id="toggle-signed-in">Signed in</button>
+      </div>
+    </div>
+
+    <main>
+      <div id="header-signed-in" class="user-menu hidden">
+        <div class="user-button" title="User menu placeholder">A</div>
+      </div>
+
+      <div class="welcome-sign">
+        <h1>Welcome</h1>
+      </div>
+
+      <div id="main-signed-out" class="actions">
+        <button type="button" class="btn-outline btn-large">Log in</button>
+        <button type="button" class="btn-solid btn-large">Sign up</button>
+      </div>
+    </main>
+
+    <script>
+      const signedOutBtn = document.getElementById("toggle-signed-out");
+      const signedInBtn = document.getElementById("toggle-signed-in");
+      const headerSignedIn = document.getElementById("header-signed-in");
+      const mainSignedOut = document.getElementById("main-signed-out");
+
+      function setState(signedIn) {
+        signedOutBtn.classList.toggle("active", !signedIn);
+        signedInBtn.classList.toggle("active", signedIn);
+        headerSignedIn.classList.toggle("hidden", !signedIn);
+        mainSignedOut.classList.toggle("hidden", signedIn);
+      }
+
+      signedOutBtn.addEventListener("click", () => setState(false));
+      signedInBtn.addEventListener("click", () => setState(true));
+    </script>
+  </body>
+</html>
